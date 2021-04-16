@@ -9,7 +9,8 @@ public class HelloController {
 
     @GetMapping("hello")
     public String hello(Model model){
+        // key : data / value : hello!!
         model.addAttribute("data", "hello!!");
-        return "hello";
+        return "hello";     // templates/hello.html
     }
 }
