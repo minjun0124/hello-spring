@@ -23,13 +23,15 @@ public class HelloController {
     }
 
     @GetMapping("hello-string")
-    @ResponseBody   // -> HttpMessageConverter/StringConverter
+    @ResponseBody   // -> HttpMessageConverter/StringConverter // HTTP의 BODY부에 리턴 내용 직접 맵핑
     public String helloString(@RequestParam("name") String name){
-        return "hello " + name; // hello
+        return "hello " + name; // "hello spring"
     }
 
     // API 방식 / json format
+    // Json 반환이 Default
     // http://localhost:8080/hello-api/?name=spring!!?&age=12
+    // HTTP Accep 헤더와 서버의 컨트롤러 반환 타입 정보 둘을 조합 -> HttpMessageConverter 선택
     @GetMapping("hello-api")
     @ResponseBody   // -> HttpMessageConverter/JsonConverter
     public Hello helloApi(@RequestParam("name") String name, @RequestParam("age") String age){
@@ -39,6 +41,9 @@ public class HelloController {
         return hello;
     }
 
+    // property 접근 방식
+    // JAVA bean 표준 규약
+    // parameter는 private으로 접근은 getter/setter
     static class Hello{
         private String name;
         private String age;
