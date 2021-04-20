@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service    // @Service 없으면 Spring에서 이 객체를 알 수 있는 방법이 없다.
+/*
+@Service 없으면 Spring에서 이 객체를 알 수 있는 방법이 없다.
+SpringConfig.java 에서 @Bean 으로 등록하는 방식을 차용하기 위해 주석
+*/
+//@Service
 public class MemberService {
 
     private final MemberRepository memberRepository;
@@ -17,7 +21,7 @@ public class MemberService {
     // DI : Dependency Injection
     // ref : MemberServiceTest - beforeEach
     // 항상 같은 memberRepository를 사용하기 위함
-    @Autowired
+//    @Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }

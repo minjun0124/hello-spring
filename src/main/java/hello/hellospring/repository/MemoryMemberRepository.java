@@ -6,7 +6,10 @@ import org.springframework.stereotype.Repository;
 import java.sql.Array;
 import java.util.*;
 
-@Repository
+/*
+SpringConfig.java 에서 @Bean 으로 등록하는 방식을 차용하기 위해 주석처리
+*/
+//@Repository
 public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<Long, Member> store = new HashMap<>();
