@@ -17,8 +17,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @Transactional
 class MemberServiceIntegrationTest {
 
-    @Autowired MemberService memberService;
-    @Autowired MemberRepository memberRepository;
+    @Autowired
+    MemberService memberService;
+    @Autowired
+    MemberRepository memberRepository;
 //    @Autowired MemoryMemberRepository memberRepository;   // Delete by SpringConfig DI
 
 /*
@@ -53,7 +55,7 @@ class MemberServiceIntegrationTest {
 
         //when
         memberService.join(member1);
-        IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member2));
+        IllegalStateException e = assertThrows(IllegalStateException.class, () -> memberService.join(member1));
         assertThat(e.getMessage()).isEqualTo("이미 존재하는 회원입니다.");
     }
 }
