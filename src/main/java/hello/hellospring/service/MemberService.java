@@ -6,6 +6,7 @@ import hello.hellospring.repository.MemoryMemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +15,7 @@ import java.util.Optional;
 SpringConfig.java 에서 @Bean 으로 등록하는 방식을 차용하기 위해 주석
 */
 //@Service
+@Transactional  // JPA를 사용하려면 service에 transactional이 걸려있어야한다.
 public class MemberService {
 
     private final MemberRepository memberRepository;
