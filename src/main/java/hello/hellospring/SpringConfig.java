@@ -1,5 +1,6 @@
 package hello.hellospring;
 
+import hello.hellospring.aop.TimeTraceAop;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.jpaMemberRepository;
 import hello.hellospring.service.MemberService;
@@ -39,6 +40,14 @@ public class SpringConfig {
     public MemberService memberService() {
         return new MemberService(memberRepository);
     }
+
+/*
+    @Bean
+    public TimeTraceAop timeTraceAop() {
+        return new TimeTraceAop();
+    }
+*/
+
 /* spring-data-jpa : SpringDataJpaMemberRepository 에서 구현체를 proxy기술을 사용하여
                      만들고 spring bean에 등록까지 완료함
 

@@ -42,18 +42,10 @@ public class MemberService {
          */
         // 반환 객체가 otional이니까 아래와 같이 줄일 수 있다.
 
-        long start = System.currentTimeMillis();
+        validateDuplicatedMember(member);
+        memberRepository.save(member);
 
-        try {
-            validateDuplicatedMember(member);
-            memberRepository.save(member);
-            return member.getId();
-        } finally {
-            long finish = System.currentTimeMillis();
-            long timeMs = finish - start;
-            System.out.println("join = " + timeMs + "ms");
-        }
-
+        return member.getId();
     }
 
     private void validateDuplicatedMember(Member member) {
