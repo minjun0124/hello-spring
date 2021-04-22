@@ -40,11 +40,20 @@ public class MemberService {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
         });
          */
-        // 반환 객체가 optional이니까 아래와 같이 줄일 수 있다.
-        validateDuplicatedMember(member);
+        // 반환 객체가 otional이니까 아래와 같이 줄일 수 있다.
 
-        memberRepository.save(member);
-        return member.getId();
+        long start = System.currentTimeMillis();
+
+        try {
+            validateDuplicatedMember(member);
+            memberRepository.save(member);
+            return member.getId();
+        } finally {
+            long finish = System.currentTimeMillis();
+            long timeMs = finish - start;
+            System.out.println("join = " + timeMs + "ms");
+        }
+
     }
 
     private void validateDuplicatedMember(Member member) {
@@ -64,7 +73,7 @@ public class MemberService {
     /**
      * 회원 조회
      */
-    public Optional<Member> findOne(Long memberId){
+    public Optional<Member> findOne(Long memberId) {
         return memberRepository.findById(memberId);
     }
 }
